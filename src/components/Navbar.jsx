@@ -1,141 +1,48 @@
 import { useNavigate, useLocation } from "react-router-dom";
-
 import { useContext } from "react";
 
-import { ThemeContext } from "../context/ThemeContext";
+import { ThemeContext } from "../context/ThemeContext.jsx";
 
 import "../App.css";
 
+function Navbar() {
+  const navigate = useNavigate();
+  const location = useLocation();
 
+  const { darkMode, setDarkMode } = useContext(ThemeContext);
 
-function Navbar(){
+  return (
+    <div className="navbar">
+      <button
+        className={location.pathname === "/" ? "nav-active" : ""}
+        onClick={() => navigate("/")}
+      >
+        🏠
+        <span>Home</span>
+      </button>
 
+      <button
+        className={location.pathname === "/add-transaction" ? "nav-active" : ""}
+        onClick={() => navigate("/add-transaction")}
+      >
+        ➕
+        <span>Add</span>
+      </button>
 
-const navigate = useNavigate();
+      <button
+        className={location.pathname === "/analytics" ? "nav-active" : ""}
+        onClick={() => navigate("/analytics")}
+      >
+        📊
+        <span>Analytics</span>
+      </button>
 
-const location = useLocation();
-
-
-const {darkMode,setDarkMode}=useContext(ThemeContext);
-
-
-
-
-return(
-
-
-<div className="navbar">
-
-
-
-<button
-
-className={
-location.pathname === "/"
-?
-"nav-active"
-:
-""
+      <button onClick={() => setDarkMode(!darkMode)}>
+        {darkMode ? "☀️" : "🌙"}
+        <span>Theme</span>
+      </button>
+    </div>
+  );
 }
-
-onClick={()=>navigate("/")}
-
->
-
-🏠
-
-<span>
-Home
-</span>
-
-</button>
-
-
-
-
-
-
-<button
-
-className={
-location.pathname === "/add-transaction"
-?
-"nav-active"
-:
-""
-}
-
-onClick={()=>navigate("/add-transaction")}
-
->
-
-➕
-
-<span>
-Add
-</span>
-
-</button>
-
-
-
-
-
-
-
-<button
-
-className={
-location.pathname === "/analytics"
-?
-"nav-active"
-:
-""
-}
-
-onClick={()=>navigate("/analytics")}
-
->
-
-📊
-
-<span>
-Analytics
-</span>
-
-</button>
-
-
-
-
-
-
-
-<button
-
-onClick={()=>setDarkMode(!darkMode)}
-
->
-
-{darkMode ? "☀️" : "🌙"}
-
-<span>
-Theme
-</span>
-
-</button>
-
-
-
-
-
-</div>
-
-
-);
-
-
-}
-
 
 export default Navbar;
