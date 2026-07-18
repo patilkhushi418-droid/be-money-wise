@@ -1,5 +1,7 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import TransactionList from "../components/TransactionList.jsx";
+import AddTransaction from "./AddTransaction";
 
 import "../App.css";
 
