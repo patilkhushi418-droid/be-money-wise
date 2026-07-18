@@ -1,3 +1,4 @@
+console.log("NEW ADD TRANSACTION LOADED");
 import React, { useState, useContext } from "react";
 import { TransactionContext } from "../context/TransactionContext.jsx";
 import "../App.css";
